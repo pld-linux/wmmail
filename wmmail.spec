@@ -32,7 +32,6 @@ sposób umo¿liwiaj±cy pracê programu w ¶rodowisku WindowMakera.
 %build
 xmkmf
 %{__make} EXTRA_LIBRARIES="-lSM -lICE" CDEBUGFLAGS="%{rpmcflags}" all
-strip wmmail
 
 %install
 rm -rf $RPM_BUILD_ROOT
