@@ -56,8 +56,8 @@ rm -rf $RPM_BUILD_ROOT
 %doc README ChangeLog doc/Help.txt
 %attr(755,root,root) %{_bindir}/*
 %dir %{_prefix}/GNUstep/Apps/WMMail.app
-%{_prefix}/GNUstep/Apps/WMMail.app/Anims/*
-%{_prefix}/GNUstep/Apps/WMMail.app/Defaults/*
-%{_prefix}/GNUstep/Apps/WMMail.app/Sounds/*
+%{_prefix}/GNUstep/Apps/WMMail.app/Anims
+%{_prefix}/GNUstep/Apps/WMMail.app/Defaults
+%{_prefix}/GNUstep/Apps/WMMail.app/Sounds
 %{_mandir}/man1/*
 #%%{_applnkdir}/DockApplets/wmmail.desktop
