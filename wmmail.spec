@@ -34,9 +34,7 @@ sposób umo¿liwiaj±cy pracê programu w ¶rodowisku WindowMakera.
 %build
 aclocal
 autoconf
-%configure \
-	--prefix=%{_prefix} \
-	--bindir=%{_bindir}
+%configure
 
 %{__make} EXTRA_LIBRARIES="-lSM -lICE" CDEBUGFLAGS="%{rpmcflags}"
 
