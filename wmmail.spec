@@ -11,11 +11,10 @@ Source1:	wmmail.desktop
 Patch:		wmmail-global.patch
 BuildRequires:	XFree86-devel
 BuildRequires:	xpm-devel
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define 	_prefix		/usr/X11R6
 %define		_mandir		%{_prefix}/man
-%define		_applnkdir	%{_datadir}/applnk
 
 %description
 wmmail is a "mail-checker" like xbiff. It is largely based on asmail, but 
