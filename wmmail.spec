@@ -3,12 +3,13 @@ Summary(pl):	wmmail - program do sprawdzania poczty dla WindowMakera
 Name:		wmmail
 Version:	0.59
 Release:	3
-Copyright:      GPL
-Group:          X11/Window Managers/Tools
+License:	GPL
+Group:		X11/Window Managers/Tools
+Group(de):	X11/Fenstermanager/Werkzeuge
 Group(pl):	X11/Zarz±dcy Okien/Narzêdzia
 Source0:	http://shells.technojunkie.com/~scorpio/%{name}-%{version}.tar.gz
-Source1:	wmmail.desktop
-Patch:		wmmail-global.patch
+Source1:	%{name}.desktop
+Patch0:		%{name}-global.patch
 BuildRequires:	XFree86-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -16,13 +17,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_mandir		%{_prefix}/man
 
 %description
-wmmail is a "mail-checker" like xbiff. It is largely based on asmail, but 
-has been modified to work with WindowMaker instead of AfterStep.
+wmmail is a "mail-checker" like xbiff. It is largely based on asmail,
+but has been modified to work with WindowMaker instead of AfterStep.
 
 %description -l pl
 wmmail jest programem do sprawdzania poczty, podobnie jak xbiff.
-Oparty jest w znacznej mierze na programie asmail, zmodyfikowanym
-w sposób umo¿liwiaj±cy pracê programu w ¶rodowisku WindowMakera.
+Oparty jest w znacznej mierze na programie asmail, zmodyfikowanym w
+sposób umo¿liwiaj±cy pracê programu w ¶rodowisku WindowMakera.
 
 %prep
 %setup -q
@@ -30,7 +31,7 @@ w sposób umo¿liwiaj±cy pracê programu w ¶rodowisku WindowMakera.
 
 %build
 xmkmf
-%{__make} EXTRA_LIBRARIES="-lSM -lICE" CDEBUGFLAGS="$RPM_OPT_FLAGS" all
+%{__make} EXTRA_LIBRARIES="-lSM -lICE" CDEBUGFLAGS="%{rpmcflags}" all
 strip wmmail
 
 %install
@@ -51,8 +52,7 @@ for i in pixmaps/*; do
 	install $i/* $RPM_BUILD_ROOT%{_datadir}/%{name}/pixmaps
 done
 
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* \
-	README CHANGES
+gzip -9nf README CHANGES
 
 %clean
 rm -rf $RPM_BUILD_ROOT
