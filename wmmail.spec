@@ -2,14 +2,15 @@ Summary:	wmmail - a "mail-checker" for WindowMaker
 Summary(pl):	wmmail - program do sprawdzania poczty dla WindowMakera
 Name:		wmmail
 Version:	0.59
-Release:	3
+Release:	4
 License:	GPL
 Group:		X11/Window Managers/Tools
 Group(de):	X11/Fenstermanager/Werkzeuge
 Group(pl):	X11/Zarz±dcy Okien/Narzêdzia
-Source0:	http://shells.technojunkie.com/~scorpio/%{name}-%{version}.tar.gz
+Source0:	http://ww.eecg.utoronto.ca/~chanb/WMMail.app/WMMail.app-%{version}.tar.gz
 Source1:	%{name}.desktop
 Patch0:		%{name}-global.patch
+URL:		http://www.eecg.toronto.edu/cgi-bin/cgiwrap/chanb/index.cgi?wmmail
 BuildRequires:	XFree86-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
