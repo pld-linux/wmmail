@@ -6,10 +6,9 @@ Release:	2
 Copyright:      GPL
 Group:          X11/Window Managers/Tools
 Group(pl):	X11/Zarz±dcy Okien/Narzêdzia
-Source:		http://shells.technojunkie.com/~scorpio/%{name}-%{version}.tar.gz
+Source0:	http://shells.technojunkie.com/~scorpio/%{name}-%{version}.tar.gz
+Source1:	wmmail.wmconfig
 Patch:		wmmail-global.patch
-BuildPrereq:	XFree86-devel
-BuildPrereq:	xpm-devel
 BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
@@ -33,7 +32,8 @@ strip wmmail
 %install
 rm -rf $RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT/usr/X11R6/share/wmmail/{pixmaps,sounds}
+install -d $RPM_BUILD_ROOT/usr/X11R6/share/wmmail/{pixmaps,sounds} \
+	$RPM_BUILD_ROOT/etc/X11/wmconfig
 
 make DESTDIR=$RPM_BUILD_ROOT \
 	MANPATH=/usr/X11R6/share/man \
@@ -41,6 +41,7 @@ make DESTDIR=$RPM_BUILD_ROOT \
 
 install sounds/* $RPM_BUILD_ROOT/usr/X11R6/share/wmmail/sounds
 install sample.wmmailrc $RPM_BUILD_ROOT/usr/X11R6/share/wmmail/wmmailrc
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/wmconfig/wmmail
 
 for i in pixmaps/*; do
 	install $i/* $RPM_BUILD_ROOT/usr/X11R6/share/wmmail/pixmaps
@@ -58,6 +59,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) /usr/X11R6/bin/wmmail
 /usr/X11R6/share/man/man1/*
 /usr/X11R6/share/wmmail
+/etc/X11/wmconfig/wmmail
 
 %changelog
 * Sat May 15 1999 Piotr Czerwiñski <pius@pld.org.pl>
