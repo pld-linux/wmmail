@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Wmmail
+Comment=Mail Checker
+Comment[pl]=Program sprawdzaj±cy pocztê
+Exec=wmmail
+Terminal=0
+Type=Application
