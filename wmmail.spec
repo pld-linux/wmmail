@@ -30,7 +30,7 @@ sposób umo¿liwiaj±cy pracê programu w ¶rodowisku WindowMakera.
 %setup -q -n WMMail.app-%{version}
 
 %build
-aclocal
+%{__aclocal}
 %{__autoconf}
 %configure
 
