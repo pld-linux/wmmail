@@ -43,7 +43,7 @@ install -d $RPM_BUILD_ROOT%{_datadir}/%{name}/{pixmaps,sounds} \
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	MANDIR=%{_mandir}/man1 
+	MANDIR=%{_mandir}/man1
 
 install src/WMMail $RPM_BUILD_ROOT%{_bindir}/
 install doc/wmmail.man $RPM_BUILD_ROOT%{_mandir}/man1/wmmail.1
