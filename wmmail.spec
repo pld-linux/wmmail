@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		X11/Window Managers/Tools
 Source0:	http://ww.eecg.utoronto.ca/~chanb/WMMail.app/WMMail.app-%{version}.tar.gz
+# Source0-md5:	fc596db9f2f6b52eec3a303178106c8e
 Source1:	%{name}.desktop
 URL:		http://www.eecg.toronto.edu/cgi-bin/cgiwrap/chanb/index.cgi?wmmail
 BuildRequires:	XFree86-devel
