@@ -5,33 +5,24 @@ diff -urN wmmail-0.59.orig/global.c wmmail-0.59/global.c
  
  char *app_name            = NULL;
  char *config_file_path    = NULL;
-+char *global_config_file_path	= "/usr/share/wmmail/wmmailrc";
++char *global_config_file_path	= "/usr/X11R6/share/wmmail/wmmailrc";
  char *exec_on_click_path  = NULL;
  char *exec_on_new_path    = NULL;
  char *exec_on_update_path = NULL;
 diff -urN wmmail-0.59.orig/sample.wmmailrc wmmail-0.59/sample.wmmailrc
 --- wmmail-0.59.orig/sample.wmmailrc	Wed May 13 14:23:11 1998
 +++ wmmail-0.59/sample.wmmailrc	Mon Dec  7 10:00:28 1998
-@@ -23,7 +23,7 @@
- #########################################################
- # Program to execute when left mouse button is pressed	#
- #########################################################
--Execute "xterm -T Pine -e pine -i &"
-+Execute "hanterm -T Mutt -e mutt &"
- 
- 
- #########################################################
 @@ -101,18 +101,18 @@
  # Assign icons/animations				#
  #########################################################
  NoMail  
 -        /usr/include/X11/pixmaps/Mail1.xpm
-+        /usr/share/wmmail/pixmaps/Mail1.xpm
++        /usr/X11R6/share/wmmail/pixmaps/Mail1.xpm
  End
  
  OldMail         
 -        /usr/include/X11/pixmaps/Mail1.xpm
-+        /usr/share/wmmail/pixmaps/Mail1.xpm
++        /usr/X11R6/share/wmmail/pixmaps/Mail1.xpm
  End
  
  NewMail  
@@ -39,10 +30,10 @@ diff -urN wmmail-0.59.orig/sample.wmmailrc wmmail-0.59/sample.wmmailrc
 -        /usr/include/X11/pixmaps/Mail2.xpm
 -        /usr/include/X11/pixmaps/Mail3.xpm
 -        /usr/include/X11/pixmaps/Mail2.xpm
-+        /usr/share/wmmail/pixmaps/Mail1.xpm
-+        /usr/share/wmmail/pixmaps/Mail2.xpm
-+        /usr/share/wmmail/pixmaps/Mail3.xpm
-+        /usr/share/wmmail/pixmaps/Mail2.xpm
++        /usr/X11R6/share/wmmail/pixmaps/Mail1.xpm
++        /usr/X11R6/share/wmmail/pixmaps/Mail2.xpm
++        /usr/X11R6/share/wmmail/pixmaps/Mail3.xpm
++        /usr/X11R6/share/wmmail/pixmaps/Mail2.xpm
  End
  
  #########################################################
