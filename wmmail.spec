@@ -31,7 +31,7 @@ sposób umo¿liwiaj±cy pracê programu w ¶rodowisku WindowMakera.
 
 %build
 aclocal
-autoconf
+%{__autoconf}
 %configure
 
 %{__make} EXTRA_LIBRARIES="-lSM -lICE" CDEBUGFLAGS="%{rpmcflags}"
