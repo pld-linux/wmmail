@@ -49,14 +49,12 @@ install src/WMMail $RPM_BUILD_ROOT%{_bindir}/
 install doc/wmmail.man $RPM_BUILD_ROOT%{_mandir}/man1/wmmail.1
 #install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/DockApplets
 
-gzip -9nf README ChangeLog doc/Help.txt
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz doc/*.gz
+%doc README ChangeLog doc/Help.txt
 %attr(755,root,root) %{_bindir}/*
 %dir %{_prefix}/GNUstep/Apps/WMMail.app
 %{_prefix}/GNUstep/Apps/WMMail.app/Anims/*
