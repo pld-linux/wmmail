@@ -65,9 +65,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 %{_datadir}/%{name}
 /etc/X11/applnk/DockApplets/wmmail.desktop
-
-%changelog
-* Sat May 15 1999 Piotr Czerwiñski <pius@pld.org.pl>
-  [0.59-2]
-- initial release for PLD,
-- package is FHS 2.0 compliant.
