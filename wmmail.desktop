@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Wmmail
+Name=WmMail
 Comment=Mail Checker
 Comment[pl]=Program sprawdzający pocztę
 Exec=wmmail
