@@ -1,17 +1,19 @@
 Summary:	wmmail - a "mail-checker" for WindowMaker
 Summary(pl):	wmmail - program do sprawdzania poczty dla WindowMakera
 Name:		wmmail
-Version:	0.59
-Release:	4
+Version:	0.64
+Release:	1
 License:	GPL
 Group:		X11/Window Managers/Tools
 Group(de):	X11/Fenstermanager/Werkzeuge
 Group(pl):	X11/Zarz±dcy Okien/Narzêdzia
 Source0:	http://ww.eecg.utoronto.ca/~chanb/WMMail.app/WMMail.app-%{version}.tar.gz
 Source1:	%{name}.desktop
-Patch0:		%{name}-global.patch
 URL:		http://www.eecg.toronto.edu/cgi-bin/cgiwrap/chanb/index.cgi?wmmail
 BuildRequires:	XFree86-devel
+BuildRequires:	libPropList-devel
+BuildRequires:	automake
+BuildRequires:	autoconf
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define 	_prefix		/usr/X11R6
@@ -27,40 +29,42 @@ Oparty jest w znacznej mierze na programie asmail, zmodyfikowanym w
 sposób umo¿liwiaj±cy pracê programu w ¶rodowisku WindowMakera.
 
 %prep
-%setup -q
-%patch -p1
+%setup -q -n WMMail.app-%{version}
 
 %build
-xmkmf
-%{__make} EXTRA_LIBRARIES="-lSM -lICE" CDEBUGFLAGS="%{rpmcflags}" all
+aclocal
+autoconf
+%configure \
+	--prefix=%{_prefix} \
+	--bindir=%{_bindir}
+
+%{__make} EXTRA_LIBRARIES="-lSM -lICE" CDEBUGFLAGS="%{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/%{name}/{pixmaps,sounds} \
-        $RPM_BUILD_ROOT%{_applnkdir}/DockApplets
+	$RPM_BUILD_ROOT{%{_mandir}/man1,%{_bindir}}
 
-%{__make} install install.man \
+%{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	MANDIR=%{_mandir}/man1 \
-	BINDIR=%{_bindir}
+	MANDIR=%{_mandir}/man1 
 
-install sounds/* $RPM_BUILD_ROOT%{_datadir}/%{name}/sounds
-install sample.wmmailrc $RPM_BUILD_ROOT%{_datadir}/%{name}/wmmailrc
-install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/DockApplets
+install src/WMMail $RPM_BUILD_ROOT%{_bindir}/
+install doc/wmmail.man $RPM_BUILD_ROOT%{_mandir}/man1/wmmail.1
+#install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/DockApplets
 
-for i in pixmaps/*; do
-	install $i/* $RPM_BUILD_ROOT%{_datadir}/%{name}/pixmaps
-done
-
-gzip -9nf README CHANGES
+gzip -9nf README ChangeLog doc/Help.txt
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
-%attr(755,root,root) %{_bindir}/%{name}
+%doc *.gz doc/*.gz
+%attr(755,root,root) %{_bindir}/*
+%dir %{_prefix}/GNUstep/Apps/WMMail.app
+%{_prefix}/GNUstep/Apps/WMMail.app/Anims/*
+%{_prefix}/GNUstep/Apps/WMMail.app/Defaults/*
+%{_prefix}/GNUstep/Apps/WMMail.app/Sounds/*
 %{_mandir}/man1/*
-%{_datadir}/%{name}
-%{_applnkdir}/DockApplets/wmmail.desktop
+#%{_applnkdir}/DockApplets/wmmail.desktop
