@@ -2,12 +2,12 @@ Summary:	wmmail - a "mail-checker" for WindowMaker
 Summary(pl):	wmmail - program do sprawdzania poczty dla WindowMakera
 Name:		wmmail
 Version:	0.59
-Release:	2
+Release:	3
 Copyright:      GPL
 Group:          X11/Window Managers/Tools
 Group(pl):	X11/Zarz±dcy Okien/Narzêdzia
 Source0:	http://shells.technojunkie.com/~scorpio/%{name}-%{version}.tar.gz
-Source1:	wmmail.wmconfig
+Source1:	wmmail.desktop
 Patch:		wmmail-global.patch
 BuildPrereq:	XFree86-devel
 BuildPrereq:	xpm-devel
@@ -37,7 +37,7 @@ strip wmmail
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/%{name}/{pixmaps,sounds} \
-        $RPM_BUILD_ROOT/etc/X11/wmconfig
+        $RPM_BUILD_ROOT/etc/X11/applnk/DockApplets
 
 make install install.man \
 	DESTDIR=$RPM_BUILD_ROOT \
@@ -46,7 +46,7 @@ make install install.man \
 
 install sounds/* $RPM_BUILD_ROOT%{_datadir}/%{name}/sounds
 install sample.wmmailrc $RPM_BUILD_ROOT%{_datadir}/%{name}/wmmailrc
-install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/wmconfig/%{name}
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/applnk/DockApplets
 
 for i in pixmaps/*; do
 	install $i/* $RPM_BUILD_ROOT%{_datadir}/%{name}/pixmaps
@@ -64,7 +64,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/%{name}
 %{_mandir}/man1/*
 %{_datadir}/%{name}
-/etc/X11/wmconfig/%{name}
+/etc/X11/applnk/DockApplets/wmmail.desktop
 
 %changelog
 * Sat May 15 1999 Piotr Czerwiñski <pius@pld.org.pl>
