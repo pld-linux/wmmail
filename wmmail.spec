@@ -13,8 +13,8 @@ BuildRequires:	XFree86-devel
 BuildRequires:	xpm-devel
 BuildRoot:	/tmp/%{name}-%{version}-root
 
-%define _prefix	/usr/X11R6
-%define	_mandir	%{_prefix}/man
+%define 	_prefix		/usr/X11R6
+%define		_mandir		%{_prefix}/man
 
 %description
 wmmail is a "mail-checker" like xbiff. It is largely based on asmail, but 
