@@ -14,8 +14,6 @@ BuildRequires:	automake
 BuildRequires:	autoconf
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define 	_prefix		/usr/X11R6
-%define		_mandir		%{_prefix}/man
 
 %description
 wmmail is a "mail-checker" like xbiff. It is largely based on asmail,
