@@ -1,17 +1,25 @@
-Summary: wmmail is a "mail-checker" like xbiff.
-Name: wmmail
-Version: 0.59
-Release: 1
-Source: wmmail-%{version}.tar.gz
-Patch: wmmail-0.59-global.patch
-Copyright: GPL
-Group: X11/Utilities
-BuildRoot: /var/tmp/wmmail-root
+Summary:	wmmail - a "mail-checker" for WindowMaker
+Summary(pl):	wmmail - program do sprawdzania poczty dla WindowMakera
+Name:		wmmail
+Version:	0.59
+Release:	2
+Copyright:      GPL
+Group:          X11/Window Managers/Tools
+Group(pl):	X11/Zarz±dcy Okien/Narzêdzia
+Source:		http://shells.technojunkie.com/~scorpio/%{name}-%{version}.tar.gz
+Patch:		wmmail-global.patch
+BuildPrereq:	XFree86-devel
+BuildPrereq:	xpm-devel
+BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
 wmmail is a "mail-checker" like xbiff. It is largely based on asmail, but 
-has been modified to work with WindowMaker instead of AfterStep. See the 
-man page for more information.
+has been modified to work with WindowMaker instead of AfterStep.
+
+%description -l pl
+wmmail jest programem do sprawdzania poczty, podobnie jak xbiff.
+Oparty jest w znacznej mierze na programie asmail, zmodyfikowanym
+w sposób umo¿liwiaj±cy pracê programu w ¶rodowisku WindowMakera.
 
 %prep
 %setup -q
@@ -19,26 +27,40 @@ man page for more information.
 
 %build
 xmkmf
-make EXTRA_LIBRARIES="-lSM -lICE" all
+make EXTRA_LIBRARIES="-lSM -lICE" CDEBUGFLAGS="$RPM_OPT_FLAGS" all
 strip wmmail
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-make DESTDIR=$RPM_BUILD_ROOT install install.man
+install -d $RPM_BUILD_ROOT/usr/X11R6/share/wmmail/{pixmaps,sounds}
 
-mkdir -p $RPM_BUILD_ROOT/usr/share/wmmail/{pixmaps,sounds}
-install -m 644 sounds/* $RPM_BUILD_ROOT/usr/share/wmmail/sounds
+make DESTDIR=$RPM_BUILD_ROOT \
+	MANPATH=/usr/X11R6/share/man \
+	install install.man
+
+install sounds/* $RPM_BUILD_ROOT/usr/X11R6/share/wmmail/sounds
+install sample.wmmailrc $RPM_BUILD_ROOT/usr/X11R6/share/wmmail/wmmailrc
+
 for i in pixmaps/*; do
-    install -m 644 $i/* $RPM_BUILD_ROOT/usr/share/wmmail/pixmaps
+	install $i/* $RPM_BUILD_ROOT/usr/X11R6/share/wmmail/pixmaps
 done
-install -m 644 sample.wmmailrc $RPM_BUILD_ROOT/usr/share/wmmail/wmmailrc
+
+gzip -9nf $RPM_BUILD_ROOT/usr/X11R6/share/man/man1/* \
+	README CHANGES
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%doc README sample.wmmailrc
-/usr/X11R6/bin/wmmail
-/usr/X11R6/man/man1/wmmail.1x
-/usr/share/wmmail
+%defattr(644,root,root,755)
+%doc {CHANGES,README}.gz
+%attr(755,root,root) /usr/X11R6/bin/wmmail
+/usr/X11R6/share/man/man1/*
+/usr/X11R6/share/wmmail
+
+%changelog
+* Sat May 15 1999 Piotr Czerwiñski <pius@pld.org.pl>
+  [0.59-2]
+- initial release for PLD,
+- package is FHS 2.0 compliant.
