@@ -11,7 +11,7 @@ Source1:	wmmail.wmconfig
 Patch:		wmmail-global.patch
 BuildRoot:	/tmp/%{name}-%{version}-root
 
-%define _prefix         /usr/X11R6
+%define _prefix	/usr/X11R6
 
 %description
 wmmail is a "mail-checker" like xbiff. It is largely based on asmail, but 
@@ -36,9 +36,10 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/%{name}/{pixmaps,sounds} \
         $RPM_BUILD_ROOT/etc/X11/wmconfig
 
-make DESTDIR=$RPM_BUILD_ROOT \
-	MANPATH=%{_mandir} \
-	install install.man
+make install install.man \
+	DESTDIR=$RPM_BUILD_ROOT \
+	MANDIR=%{_mandir}/man1 \
+	BINDIR=%{_bindir}
 
 install sounds/* $RPM_BUILD_ROOT%{_datadir}/%{name}/sounds
 install sample.wmmailrc $RPM_BUILD_ROOT%{_datadir}/%{name}/wmmailrc
