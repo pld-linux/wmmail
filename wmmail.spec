@@ -9,8 +9,8 @@ Group(pl):	X11/Zarz±dcy Okien/Narzêdzia
 Source0:	http://shells.technojunkie.com/~scorpio/%{name}-%{version}.tar.gz
 Source1:	wmmail.desktop
 Patch:		wmmail-global.patch
-BuildPrereq:	XFree86-devel
-BuildPrereq:	xpm-devel
+BuildRequires:	XFree86-devel
+BuildRequires:	xpm-devel
 BuildRoot:	/tmp/%{name}-%{version}-root
 
 %define _prefix	/usr/X11R6
