@@ -37,7 +37,7 @@ strip wmmail
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/%{name}/{pixmaps,sounds} \
-        $RPM_BUILD_ROOT/etc/X11/applnk/DockApplets
+        $RPM_BUILD_ROOT/usr/X11R6/share/applnk/DockApplets
 
 make install install.man \
 	DESTDIR=$RPM_BUILD_ROOT \
@@ -46,7 +46,7 @@ make install install.man \
 
 install sounds/* $RPM_BUILD_ROOT%{_datadir}/%{name}/sounds
 install sample.wmmailrc $RPM_BUILD_ROOT%{_datadir}/%{name}/wmmailrc
-install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/applnk/DockApplets
+install %{SOURCE1} $RPM_BUILD_ROOT/usr/X11R6/share/applnk/DockApplets
 
 for i in pixmaps/*; do
 	install $i/* $RPM_BUILD_ROOT%{_datadir}/%{name}/pixmaps
@@ -64,4 +64,4 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/%{name}
 %{_mandir}/man1/*
 %{_datadir}/%{name}
-/etc/X11/applnk/DockApplets/wmmail.desktop
+/usr/X11R6/share/applnk/DockApplets/wmmail.desktop
