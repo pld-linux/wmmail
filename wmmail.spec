@@ -31,7 +31,7 @@ w sposób umo¿liwiaj±cy pracê programu w ¶rodowisku WindowMakera.
 
 %build
 xmkmf
-make EXTRA_LIBRARIES="-lSM -lICE" CDEBUGFLAGS="$RPM_OPT_FLAGS" all
+%{__make} EXTRA_LIBRARIES="-lSM -lICE" CDEBUGFLAGS="$RPM_OPT_FLAGS" all
 strip wmmail
 
 %install
@@ -39,7 +39,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/%{name}/{pixmaps,sounds} \
         $RPM_BUILD_ROOT%{_applnkdir}/DockApplets
 
-make install install.man \
+%{__make} install install.man \
 	DESTDIR=$RPM_BUILD_ROOT \
 	MANDIR=%{_mandir}/man1 \
 	BINDIR=%{_bindir}
