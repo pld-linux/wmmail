@@ -59,4 +59,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_prefix}/GNUstep/Apps/WMMail.app/Defaults/*
 %{_prefix}/GNUstep/Apps/WMMail.app/Sounds/*
 %{_mandir}/man1/*
-#%{_applnkdir}/DockApplets/wmmail.desktop
+#%%{_applnkdir}/DockApplets/wmmail.desktop
