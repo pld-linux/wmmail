@@ -1,7 +1,8 @@
 [Desktop Entry]
 Name=Wmmail
 Comment=Mail Checker
-Comment[pl]=Program sprawdzaj±cy pocztê
+Comment[pl]=Program sprawdzajÄ…cy pocztÄ™
 Exec=wmmail
 Terminal=0
 Type=Application
+# vi: encoding=utf-8
