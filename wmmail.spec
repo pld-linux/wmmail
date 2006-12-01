@@ -1,3 +1,4 @@
+# TODO: FHS (what is /usr/GNUstep???)
 Summary:	wmmail - a "mail-checker" for WindowMaker
 Summary(pl):	wmmail - program do sprawdzania poczty dla WindowMakera
 Name:		wmmail
@@ -9,12 +10,12 @@ Source0:	http://ww.eecg.utoronto.ca/~chanb/WMMail.app/WMMail.app-%{version}.tar.
 # Source0-md5:	fc596db9f2f6b52eec3a303178106c8e
 Source1:	%{name}.desktop
 URL:		http://www.eecg.toronto.edu/cgi-bin/cgiwrap/chanb/index.cgi?wmmail
+BuildRequires:	FHS-fixes
 BuildRequires:	XFree86-devel
-BuildRequires:	libPropList-devel
 BuildRequires:	automake
 BuildRequires:	autoconf
+BuildRequires:	libPropList-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
 
 %description
 wmmail is a "mail-checker" like xbiff. It is largely based on asmail,
@@ -33,7 +34,9 @@ sposób umo¿liwiaj±cy pracê programu w ¶rodowisku WindowMakera.
 %{__autoconf}
 %configure
 
-%{__make} EXTRA_LIBRARIES="-lSM -lICE" CDEBUGFLAGS="%{rpmcflags}"
+%{__make} \
+	EXTRA_LIBRARIES="-lSM -lICE" \
+	CDEBUGFLAGS="%{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -44,9 +47,9 @@ install -d $RPM_BUILD_ROOT%{_datadir}/%{name}/{pixmaps,sounds} \
 	DESTDIR=$RPM_BUILD_ROOT \
 	MANDIR=%{_mandir}/man1
 
-install src/WMMail $RPM_BUILD_ROOT%{_bindir}/
+install src/WMMail $RPM_BUILD_ROOT%{_bindir}
 install doc/wmmail.man $RPM_BUILD_ROOT%{_mandir}/man1/wmmail.1
-#install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/DockApplets
+#install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}/docklets
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -60,4 +63,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_prefix}/GNUstep/Apps/WMMail.app/Defaults
 %{_prefix}/GNUstep/Apps/WMMail.app/Sounds
 %{_mandir}/man1/*
-#%%{_applnkdir}/DockApplets/wmmail.desktop
+#%%{_desktopdir}/docklets/wmmail.desktop
