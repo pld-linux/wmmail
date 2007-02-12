@@ -1,6 +1,6 @@
 # TODO: FHS (what is /usr/GNUstep???)
 Summary:	wmmail - a "mail-checker" for WindowMaker
-Summary(pl.UTF-8):   wmmail - program do sprawdzania poczty dla WindowMakera
+Summary(pl.UTF-8):	wmmail - program do sprawdzania poczty dla WindowMakera
 Name:		wmmail
 Version:	0.64
 Release:	1
