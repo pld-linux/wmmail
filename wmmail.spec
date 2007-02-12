@@ -1,6 +1,6 @@
 # TODO: FHS (what is /usr/GNUstep???)
 Summary:	wmmail - a "mail-checker" for WindowMaker
-Summary(pl):	wmmail - program do sprawdzania poczty dla WindowMakera
+Summary(pl.UTF-8):   wmmail - program do sprawdzania poczty dla WindowMakera
 Name:		wmmail
 Version:	0.64
 Release:	1
@@ -21,10 +21,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 wmmail is a "mail-checker" like xbiff. It is largely based on asmail,
 but has been modified to work with WindowMaker instead of AfterStep.
 
-%description -l pl
+%description -l pl.UTF-8
 wmmail jest programem do sprawdzania poczty, podobnie jak xbiff.
 Oparty jest w znacznej mierze na programie asmail, zmodyfikowanym w
-sposób umo¿liwiaj±cy pracê programu w ¶rodowisku WindowMakera.
+sposÃ³b umoÅ¼liwiajÄ…cy pracÄ™ programu w Å›rodowisku WindowMakera.
 
 %prep
 %setup -q -n WMMail.app-%{version}
