@@ -5,5 +5,4 @@ Comment[pl]=Program sprawdzający pocztę
 Exec=wmmail
 Terminal=false
 Type=Application
-Encoding=UTF-8
 # vi: encoding=utf-8
